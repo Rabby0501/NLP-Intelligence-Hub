@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.env
+.env
+venv/
+.venv/
+
+# Model files (too large for GitHub)
+backend/models/sentiment/
+backend/models/embedder/
+backend/models/summarizer/
+backend/models/blip/
+
+# Docker
+**/.docker/
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Streamlit
+frontend/.streamlit/
+
+# VSCode
+.vscode/
