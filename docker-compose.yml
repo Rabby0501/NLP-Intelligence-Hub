@@ -1,0 +1,42 @@
+version: "3.9"
+
+services:
+  chromadb:
+    image: chromadb/chroma:latest
+    container_name: chromadb
+    command: ["run", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./chroma_data:/chroma
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - chromadb
+    environment:
+      # Pass ChromaDB host and port to backend
+      - CHROMA_HOST=chromadb
+      - CHROMA_PORT=8000
+      - MODEL_DIR=/app/models
+    volumes:
+      - ./backend/models:/app/models
+
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
+    environment:
+      # Streamlit uses this URL to talk to FastAPI
+      - BACKEND_URL=http://backend:8000
+
+
+volumes:
+  chroma-data:

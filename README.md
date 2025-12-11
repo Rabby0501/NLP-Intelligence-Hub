@@ -16,7 +16,7 @@ NLP Intelligence Hub is a production-style, multi-model Natural Language Process
 - **Deep Learning Models**:
   - Sentiment Analysis (Transformer, offline)
   - Semantic Search (Sentence-BERT embeddings + ChromaDB)
-  - Summarization (Seq2Seq Transformer)
+  - Summarization (distilbart-cnn-12-6 Transformer)
   - Image Captioning (BLIP Vision-Language Mode
 
 - **Vector Database**:
