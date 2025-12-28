@@ -93,6 +93,7 @@ NLP-Intelligence-Hub/
 ├── LICENSE
 └── README.md
 ```
+---
 
 ## 4. 🧠 Embedding & Vector Search
 - Sentence-BERT generates dense vector embeddings
@@ -102,6 +103,8 @@ NLP-Intelligence-Hub/
   - Text
   - Metadata (type, timestamp)
 - Semantic search retrieves Top-K nearest neighbors
+
+---
 
 ## 5. 🐳 Docker & Deployment
 ### Dockerfile Design
@@ -115,3 +118,53 @@ NLP-Intelligence-Hub/
 - Isolated services
 - Internal networking
 - Reproducible deployment
+
+---
+
+## 6. Prerequisites
+
+Ensure the following are installed:
+
+- Docker (v20+)
+- Docker Compose v2
+- Python 3.10
+- Git
+
+Verify for Linux:
+```
+docker --version
+docker compose version
+Python3 --version
+git --version
+```
+
+---
+
+## 7. How to Run the Project
+### 1. Clone Repository
+```
+git clone https://github.com/Rabby0501/NLP-Intelligence-Hub.git
+cd NLP-Intelligence-Hub
+```
+
+### 2. Build Containers
+```
+docker compose build
+```
+
+### 3. Run Services
+```
+docker compose up
+```
+
+### 4. Optional: Create Virtual Environment (Host)
+If you are unable to use Docker, you can try this option to run the full project. Based on this, you need to create 2 individual venv for Frontend & Backend. There is no complexity here; you can run both individually. Enter the directory and build it.
+
+For Linux:
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+---
+
