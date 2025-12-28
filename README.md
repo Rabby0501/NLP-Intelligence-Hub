@@ -95,7 +95,20 @@ NLP-Intelligence-Hub/
 ```
 ---
 
-## 4. 🧠 Embedding & Vector Search
+## 4. 🔬 Machine Learning Models Used
+| Task               | Model                             |
+| ------------------ | --------------------------------- |
+| Sentiment Analysis | Transformer classifier (local)    |
+| Embeddings         | Sentence-BERT (MiniLM)            |
+| Semantic Search    | Cosine similarity over embeddings |
+| Summarization      | Encoder–Decoder Transformer       |
+| Image Captioning   | BLIP                              |
+
+All models are downloaded locally and mounted into Docker containers to support offline execution.
+
+---
+
+## 5. 🧠 Embedding & Vector Search
 - Sentence-BERT generates dense vector embeddings
 - Vectors are stored in ChromaDB
 - Each document is saved with:
@@ -106,7 +119,7 @@ NLP-Intelligence-Hub/
 
 ---
 
-## 5. 🐳 Docker & Deployment
+## 6. 🐳 Docker & Deployment
 ### Dockerfile Design
 - Lightweight base images (python:3.x-slim)
 - Layered dependency installation
@@ -121,7 +134,7 @@ NLP-Intelligence-Hub/
 
 ---
 
-## 6. Prerequisites
+## 7. Prerequisites
 
 Ensure the following are installed:
 
@@ -140,7 +153,7 @@ git --version
 
 ---
 
-## 7. How to Run the Project
+## 8. How to Run the Project
 ### 1. Clone Repository
 ```
 git clone https://github.com/Rabby0501/NLP-Intelligence-Hub.git
@@ -168,3 +181,22 @@ pip install -r requirements.txt
 ```
 ---
 
+## 9. Access Points
+| Service      | URL                                                          |
+| ------------ | ------------------------------------------------------------ |
+| Streamlit UI | [http://localhost:8501](http://localhost:8501)               |
+| FastAPI Docs | [http://localhost:8000/docs](http://localhost:8000/docs)     |
+| Health Check | [http://localhost:8000/health](http://localhost:8000/health) |
+|  Chroma DB   | [http://localhost:8001/docs](http://localhost:8001/docs)     |
+
+---
+
+## 👨‍🎓 Author
+**Rabby Md Golam**  
+🎓 Department of Artificial Intelligence  
+🏫 [Yunnan University]
+
+🔗 **GitHub:** https://github.com/Rabby0501  
+📧 **Email:** rabbymdgolam@stu.ynu.edu.cn 
+
+---
