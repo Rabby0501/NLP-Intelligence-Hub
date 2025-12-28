@@ -10,6 +10,8 @@
   <img src="https://img.shields.io/badge/License-MIT-green" alt="License">
 </p>
 
+---
+
 ## 1. Project Overview
 NLP Intelligence Hub is a production-style, multi-model Natural Language Processing system built using:
 
@@ -39,3 +41,77 @@ NLP Intelligence Hub is a production-style, multi-model Natural Language Process
     - frontend (Streamlit)
     - chromadb (vector store)
 
+---
+
+## 2. System Architecture
+The application is composed of **three independent Docker services**:
+
+| Service      | Port | Responsibility                |
+| ------------ | ---- | ----------------------------- |
+| **frontend** | 8501 | Streamlit web UI              |
+| **backend**  | 8000 | FastAPI NLP inference & logic |
+| **chromadb** | 8001 | Vector database (ChromaDB)    |
+
+
+### Key Design Guarantees
+- Backend never renders UI
+- Frontend never loads ML models
+- Vector database runs in a separate container
+- Models are loaded locally (offline, no internet dependency)
+- All communication happens via REST APIs
+
+---
+
+## 3. Project Structure
+
+```
+NLP-Intelligence-Hub/
+│
+├── backend/
+│   ├── app/
+│   │   ├── main.py              # FastAPI entry point
+│   │   ├── nlp_utils.py         # NLP pipelines & logic
+│   │   ├── preprocessing.py     # Text preprocessing
+│   │   ├── models.py            # Pydantic schemas
+│   │
+│   ├── models/
+│   │   ├── sentiment/           # Sentiment transformer model
+│   │   ├── embedder/            # Sentence-BERT embedder
+│   │   ├── summarizer/          # Text summarization model
+│   │   └── blip/                # Image captioning model
+│   │
+│   ├── Dockerfile
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── streamlit_app.py         # Streamlit UI This is the main file. We also have individual file-based models, and they connect with the API
+│   ├── Dockerfile
+│   └── requirements.txt
+│
+├── docker-compose.yml
+├── .gitignore
+├── LICENSE
+└── README.md
+```
+
+## 4. 🧠 Embedding & Vector Search
+- Sentence-BERT generates dense vector embeddings
+- Vectors are stored in ChromaDB
+- Each document is saved with:
+  - ID
+  - Text
+  - Metadata (type, timestamp)
+- Semantic search retrieves Top-K nearest neighbors
+
+## 5. 🐳 Docker & Deployment
+### Dockerfile Design
+- Lightweight base images (python:3.x-slim)
+- Layered dependency installation
+- Explicit port exposure
+- Environment-based configuration
+
+### Docker Compose
+- Multi-container orchestration
+- Isolated services
+- Internal networking
+- Reproducible deployment
